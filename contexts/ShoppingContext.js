@@ -4,6 +4,8 @@ import { getCartId } from "../libs/cart";
 const ShoppingContext = createContext();
 
 const ShoppingProvider = ({ children }) => {
+  const [lineItems, updateLineItems] = useState([]);
+
   const addToCartEvent = (productInfo) => {
     console.log("addToCartEvent:", productInfo);
   };
@@ -12,6 +14,8 @@ const ShoppingProvider = ({ children }) => {
     <ShoppingContext.Provider
       value={{
         cartId: getCartId(),
+        lineItems,
+        updateLineItems,
         addToCartEvent,
       }}
     >

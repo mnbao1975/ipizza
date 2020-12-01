@@ -73,7 +73,7 @@ function Header() {
           </Box>
         </a>
       </Link>
-      <Link href="/checkout">
+      <Link href="/cart">
         <a>
           <Box display="flex" ml="6" alignItems="center">
             <Icon as={MdShoppingBasket} w={8} h={8} mr="1" />

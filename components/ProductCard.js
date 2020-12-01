@@ -13,8 +13,9 @@ function ProductCard(productInfo) {
   const { cartCounter, setCartCounter } = useContext(HeaderContext);
 
   const onClickHandler = () => {
-    setCartCounterCoookie(cartCounter + 1);
-    setCartCounter(cartCounter + 1);
+    const couter = cartCounter + 1;
+    setCartCounterCoookie(couter);
+    setCartCounter(couter);
     addToCartEvent({ ...productInfo, cartId });
   };
 

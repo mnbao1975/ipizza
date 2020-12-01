@@ -1,6 +1,7 @@
 import { ThemeProvider, theme, CSSReset } from "@chakra-ui/react";
-import { HeaderProvider } from "../contexts/HeaderContext";
 import Amplify, { Auth } from "aws-amplify";
+import { HeaderProvider } from "../contexts/HeaderContext";
+import { ShoppingProvider } from "../contexts/ShoppingContext";
 import awsconfig from "../src/aws-exports";
 Amplify.configure(awsconfig);
 
@@ -9,10 +10,12 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {
   return (
     <HeaderProvider>
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <ShoppingProvider>
+        <ThemeProvider theme={theme}>
+          <CSSReset />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ShoppingProvider>
     </HeaderProvider>
   );
 }

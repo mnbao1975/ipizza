@@ -9,7 +9,7 @@ function Products() {
     <>
       <Header />
       <Flex
-        zIndex="100"
+        zIndex={100}
         flexWrap="wrap"
         alignItems="center"
         // justifyContent="center"

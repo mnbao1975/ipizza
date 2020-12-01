@@ -13,7 +13,7 @@ const getCartId = () => {
 };
 
 const getCartCounterCoookie = () => {
-  return Cookies.get("cartCounterCoookie") || 0;
+  return parseInt(Cookies.get("cartCounterCoookie")) || 0;
 };
 
 const setCartCounterCoookie = (value) => {

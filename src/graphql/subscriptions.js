@@ -1,106 +1,103 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateCart = /* GraphQL */ `
-  subscription OnCreateCart {
-    onCreateCart {
+export const onCreateOrder = /* GraphQL */ `
+  subscription OnCreateOrder {
+    onCreateOrder {
       id
+      PK
+      SK
       username
-      lineItems {
-        items {
-          id
-          cartID
-          title
-          price
-          number
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateCart = /* GraphQL */ `
-  subscription OnUpdateCart {
-    onUpdateCart {
-      id
-      username
-      lineItems {
-        items {
-          id
-          cartID
-          title
-          price
-          number
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteCart = /* GraphQL */ `
-  subscription OnDeleteCart {
-    onDeleteCart {
-      id
-      username
-      lineItems {
-        items {
-          id
-          cartID
-          title
-          price
-          number
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateLineItem = /* GraphQL */ `
-  subscription OnCreateLineItem {
-    onCreateLineItem {
-      id
-      cartID
+      status
+      grandTotal
+      meta
       title
       price
-      number
+      qty
+      total
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateLineItem = /* GraphQL */ `
-  subscription OnUpdateLineItem {
-    onUpdateLineItem {
+export const onUpdateOrder = /* GraphQL */ `
+  subscription OnUpdateOrder {
+    onUpdateOrder {
       id
-      cartID
+      PK
+      SK
+      username
+      status
+      grandTotal
+      meta
       title
       price
-      number
+      qty
+      total
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteLineItem = /* GraphQL */ `
-  subscription OnDeleteLineItem {
-    onDeleteLineItem {
+export const onDeleteOrder = /* GraphQL */ `
+  subscription OnDeleteOrder {
+    onDeleteOrder {
       id
-      cartID
+      PK
+      SK
+      username
+      status
+      grandTotal
+      meta
       title
       price
-      number
+      qty
+      total
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateProduct = /* GraphQL */ `
+  subscription OnCreateProduct {
+    onCreateProduct {
+      id
+      title
+      description
+      price
+      image
+      inventory
+      category
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateProduct = /* GraphQL */ `
+  subscription OnUpdateProduct {
+    onUpdateProduct {
+      id
+      title
+      description
+      price
+      image
+      inventory
+      category
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteProduct = /* GraphQL */ `
+  subscription OnDeleteProduct {
+    onDeleteProduct {
+      id
+      title
+      description
+      price
+      image
+      inventory
+      category
       createdAt
       updatedAt
     }

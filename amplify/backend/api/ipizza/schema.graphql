@@ -1,0 +1,35 @@
+# Single table for Order service combining order and order items info. It's 1-n relationship
+type Order
+  @model
+  @key(name: "PK_SK", fields: ["PK", "SK"], queryField: "getOrderInfo") {
+  # Must be formatted by: order#ID
+  PK: String!
+  # Must be formatted by: product#ID. In case it's order#ID, then it indeed the order info itself.
+  SK: String!
+  username: String
+  status: ORDER_STATUS
+  grandTotal: Float
+  meta: String
+  # Below are belong to product
+  title: String
+  price: Float
+  qty: Int
+  total: Float
+}
+
+type Product @model {
+  id: ID
+  title: String
+  description: String
+  price: Float
+  image: String
+  inventory: Int
+  category: String
+}
+
+enum ORDER_STATUS {
+  CREATED
+  SUBMITTED
+  PAID
+  DELIVERIED
+}

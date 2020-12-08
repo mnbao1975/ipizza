@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Spacer } from "@chakra-ui/react";
 
-function LineItem({ id, title, price, number, removeHandler }) {
+function LineItem({ id, title, price, qty, removeHandler }) {
   return (
     <Box
       display="flex"
@@ -16,7 +16,7 @@ function LineItem({ id, title, price, number, removeHandler }) {
       <Box>{title}</Box>
       <Spacer />
       <Box ml="8">Price: ${price}</Box>
-      <Box ml="8">Num: {number}</Box>
+      <Box ml="8">Quantity: {qty}</Box>
       <Box
         as="button"
         borderRadius="md"

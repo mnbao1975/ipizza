@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { Auth, API } from "aws-amplify";
 import { getCartId } from "../libs/cart";
 
 const ShoppingContext = createContext();

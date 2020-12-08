@@ -1,41 +1,44 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getCart = /* GraphQL */ `
-  query GetCart($id: ID!) {
-    getCart(id: $id) {
+export const getOrder = /* GraphQL */ `
+  query GetOrder($id: ID!) {
+    getOrder(id: $id) {
       id
+      PK
+      SK
       username
-      lineItems {
-        items {
-          id
-          cartID
-          title
-          price
-          number
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      status
+      grandTotal
+      meta
+      title
+      price
+      qty
+      total
       createdAt
       updatedAt
     }
   }
 `;
-export const listCarts = /* GraphQL */ `
-  query ListCarts(
-    $filter: ModelCartFilterInput
+export const listOrders = /* GraphQL */ `
+  query ListOrders(
+    $filter: ModelOrderFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        PK
+        SK
         username
-        lineItems {
-          nextToken
-        }
+        status
+        grandTotal
+        meta
+        title
+        price
+        qty
+        total
         createdAt
         updatedAt
       }
@@ -43,32 +46,72 @@ export const listCarts = /* GraphQL */ `
     }
   }
 `;
-export const getLineItem = /* GraphQL */ `
-  query GetLineItem($id: ID!) {
-    getLineItem(id: $id) {
+export const getProduct = /* GraphQL */ `
+  query GetProduct($id: ID!) {
+    getProduct(id: $id) {
       id
-      cartID
       title
+      description
       price
-      number
+      image
+      inventory
+      category
       createdAt
       updatedAt
     }
   }
 `;
-export const listLineItems = /* GraphQL */ `
-  query ListLineItems(
-    $filter: ModelLineItemFilterInput
+export const listProducts = /* GraphQL */ `
+  query ListProducts(
+    $filter: ModelProductFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listLineItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        cartID
+        title
+        description
+        price
+        image
+        inventory
+        category
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getOrderInfo = /* GraphQL */ `
+  query GetOrderInfo(
+    $PK: String
+    $SK: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getOrderInfo(
+      PK: $PK
+      SK: $SK
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        PK
+        SK
+        username
+        status
+        grandTotal
+        meta
         title
         price
-        number
+        qty
+        total
         createdAt
         updatedAt
       }

@@ -12,9 +12,9 @@ function Cart() {
   useEffect(() => {
     console.log("Visiting cart page");
     const liveLineItems = [
-      { id: 1, title: "Pizza 1", price: 10, number: 2 },
-      { id: 2, title: "Pizza 2", price: 11, number: 1 },
-      { id: 4, title: "Pasta 3", price: 13, number: 1 },
+      { id: 1, title: "Pizza 1", price: 10, qty: 2 },
+      { id: 2, title: "Pizza 2", price: 11, qty: 1 },
+      { id: 4, title: "Pasta 3", price: 13, qty: 1 },
     ];
     updateLineItems(liveLineItems);
   }, []);
@@ -32,7 +32,7 @@ function Cart() {
               id={lineItem.id}
               title={lineItem.title}
               price={lineItem.price}
-              number={lineItem.number}
+              qty={lineItem.qty}
             />
           ))}
       </VStack>

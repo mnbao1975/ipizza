@@ -1,22 +1,65 @@
 // Sample card from Airbnb
 import Image from "next/image";
 import { Box, Spacer } from "@chakra-ui/react";
-
+import { Auth, API } from "aws-amplify";
 import { useContext } from "react";
-import { ShoppingContext } from "../contexts/ShoppingContext";
+import { v4 as uuid } from "uuid";
 import { HeaderContext } from "../contexts/HeaderContext";
-import { setCartCounterCoookie } from "../libs/cart";
+import { setCartCounterCoookie, getCartId } from "../libs/cart";
+import { createOrder } from "../src/graphql/mutations";
+import { getOrderInfo } from "../src/graphql/queries";
 
 function ProductCard(productInfo) {
   const { id, title, description, price, image } = productInfo;
-  const { addToCartEvent, cartId } = useContext(ShoppingContext);
   const { cartCounter, setCartCounter } = useContext(HeaderContext);
 
+  const cartId = getCartId();
   const onClickHandler = () => {
     const couter = cartCounter + 1;
     setCartCounterCoookie(couter);
     setCartCounter(couter);
-    addToCartEvent({ ...productInfo, cartId });
+    updateCart({ ...productInfo, cartId });
+  };
+
+  const updateCart = async ({ cartId, price }) => {
+    let username;
+    let currentOrderInfo;
+
+    // Get current order which is not yet submitted
+    try {
+      const signedInUser = await Auth.currentAuthenticatedUser();
+      username = signedInUser.username || "";
+
+      const orderObj = await API.graphql({
+        query: getOrderInfo,
+        variables: { PK: `order#${cartId}`, SK: { eq: `order#${cartId}` } },
+      });
+      currentOrderInfo = orderObj.data.getOrderInfo.items[0];
+    } catch (err) {
+      console.log(err);
+    }
+
+    if (!currentOrderInfo) {
+      // add new order item in the table
+      const orderInfo = {
+        PK: `order#${cartId}`,
+        SK: `order#${cartId}`,
+        username,
+        status: "CREATED",
+        grandTotal: price,
+      };
+
+      try {
+        await API.graphql({
+          query: createOrder,
+          variables: { input: orderInfo },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    // add/update line item -> product info
+    //const productId = uuid();
   };
 
   return (

@@ -58,6 +58,57 @@ export const onDeleteOrder = /* GraphQL */ `
     }
   }
 `;
+export const onCreateOrderEvent = /* GraphQL */ `
+  subscription OnCreateOrderEvent {
+    onCreateOrderEvent {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateOrderEvent = /* GraphQL */ `
+  subscription OnUpdateOrderEvent {
+    onUpdateOrderEvent {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteOrderEvent = /* GraphQL */ `
+  subscription OnDeleteOrderEvent {
+    onDeleteOrderEvent {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateProduct = /* GraphQL */ `
   subscription OnCreateProduct {
     onCreateProduct {

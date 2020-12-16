@@ -67,6 +67,66 @@ export const deleteOrder = /* GraphQL */ `
     }
   }
 `;
+export const createOrderEvent = /* GraphQL */ `
+  mutation CreateOrderEvent(
+    $input: CreateOrderEventInput!
+    $condition: ModelOrderEventConditionInput
+  ) {
+    createOrderEvent(input: $input, condition: $condition) {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateOrderEvent = /* GraphQL */ `
+  mutation UpdateOrderEvent(
+    $input: UpdateOrderEventInput!
+    $condition: ModelOrderEventConditionInput
+  ) {
+    updateOrderEvent(input: $input, condition: $condition) {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteOrderEvent = /* GraphQL */ `
+  mutation DeleteOrderEvent(
+    $input: DeleteOrderEventInput!
+    $condition: ModelOrderEventConditionInput
+  ) {
+    deleteOrderEvent(input: $input, condition: $condition) {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createProduct = /* GraphQL */ `
   mutation CreateProduct(
     $input: CreateProductInput!

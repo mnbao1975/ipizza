@@ -41,19 +41,8 @@ function ProductCard(productInfo) {
 
     if (!currentOrderInfo) {
       // add new order item in the table
-      const orderInfo = {
-        PK: `order#${cartId}`,
-        SK: `order#${cartId}`,
-        username,
-        status: "CREATED",
-        grandTotal: price,
-      };
-
       try {
-        await API.graphql({
-          query: createOrder,
-          variables: { input: orderInfo },
-        });
+        await createNewOrder({ cartId, username, price });
       } catch (err) {
         console.log(err);
       }
@@ -61,6 +50,23 @@ function ProductCard(productInfo) {
     // add/update line item -> product info
     //const productId = uuid();
   };
+
+  const createNewOrder = async ({ cartId, username, price }) => {
+    const orderInfo = {
+      PK: `order#${cartId}`,
+      SK: `order#${cartId}`,
+      username,
+      status: "CREATED",
+      grandTotal: price,
+    };
+
+    return API.graphql({
+      query: createOrder,
+      variables: { input: orderInfo },
+    });
+  };
+
+  const updateOrderItem = ({ cartId, productId, price }) => {};
 
   return (
     <Box

@@ -46,6 +46,47 @@ export const listOrders = /* GraphQL */ `
     }
   }
 `;
+export const getOrderEvent = /* GraphQL */ `
+  query GetOrderEvent($id: ID!) {
+    getOrderEvent(id: $id) {
+      id
+      PK
+      SK
+      source
+      detail
+      snapVersion
+      snapData
+      snapLastEvent
+      snapLastVersion
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listOrderEvents = /* GraphQL */ `
+  query ListOrderEvents(
+    $filter: ModelOrderEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        PK
+        SK
+        source
+        detail
+        snapVersion
+        snapData
+        snapLastEvent
+        snapLastVersion
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getProduct = /* GraphQL */ `
   query GetProduct($id: ID!) {
     getProduct(id: $id) {
@@ -112,6 +153,74 @@ export const getOrderInfo = /* GraphQL */ `
         price
         qty
         total
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getDataByPrimKeys = /* GraphQL */ `
+  query GetDataByPrimKeys(
+    $PK: String
+    $SK: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getDataByPrimKeys(
+      PK: $PK
+      SK: $SK
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        PK
+        SK
+        source
+        detail
+        snapVersion
+        snapData
+        snapLastEvent
+        snapLastVersion
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getSnapshotByVersion = /* GraphQL */ `
+  query GetSnapshotByVersion(
+    $PK: String
+    $snapVersion: ModelFloatKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getSnapshotByVersion(
+      PK: $PK
+      snapVersion: $snapVersion
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        PK
+        SK
+        source
+        detail
+        snapVersion
+        snapData
+        snapLastEvent
+        snapLastVersion
         createdAt
         updatedAt
       }

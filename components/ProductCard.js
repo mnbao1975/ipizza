@@ -43,8 +43,18 @@ function ProductCard(productInfo) {
     if (!currentOrderInfo) {
       // add new order item in the table
       try {
-        await createNewOrder({ cartId, username, price });
-        await addOrderEvent({ source: "order: created order" });
+        //await createNewOrder({ cartId, username, price });
+        await addOrderEvent({
+          source: "order",
+          eventType: "ORD_CREATED",
+          detail: {
+            requestId: "to be defined",
+            orderId: cartId,
+            username,
+            price,
+          },
+        });
+        console.log("completed adding event");
       } catch (err) {
         console.log(err);
       }

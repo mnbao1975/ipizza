@@ -53,6 +53,7 @@ export const getOrderEvent = /* GraphQL */ `
       PK
       SK
       source
+      eventType
       detail
       snapVersion
       snapData
@@ -75,6 +76,7 @@ export const listOrderEvents = /* GraphQL */ `
         PK
         SK
         source
+        eventType
         detail
         snapVersion
         snapData
@@ -182,6 +184,7 @@ export const getDataByPrimaryKeys = /* GraphQL */ `
         PK
         SK
         source
+        eventType
         detail
         snapVersion
         snapData
@@ -216,6 +219,7 @@ export const getSnapshotByVersion = /* GraphQL */ `
         PK
         SK
         source
+        eventType
         detail
         snapVersion
         snapData

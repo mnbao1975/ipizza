@@ -7,6 +7,11 @@
         "read",
         "update",
         "delete"
+      ],
+      "OrderEvent:@model(appsync)": [
+        "create",
+        "read",
+        "update"
       ]
     }
   }

@@ -2,7 +2,7 @@ import { Auth, API } from "aws-amplify";
 import { monotonicFactory } from "ulid";
 import { createOrderEvent } from "../src/graphql/mutations";
 
-const addOrderEvent = async ({ source, detail }) => {
+const addOrderEvent = async ({ source, eventType, detail }) => {
   // Sortable ID
   const ulid = monotonicFactory();
   const id = ulid();
@@ -10,7 +10,8 @@ const addOrderEvent = async ({ source, detail }) => {
     PK: "order#evt",
     SK: `evt#${id}`,
     source,
-    detail,
+    eventType,
+    detail: JSON.stringify(detail),
   };
 
   return API.graphql({

@@ -77,6 +77,7 @@ export const createOrderEvent = /* GraphQL */ `
       PK
       SK
       source
+      eventType
       detail
       snapVersion
       snapData
@@ -97,6 +98,7 @@ export const updateOrderEvent = /* GraphQL */ `
       PK
       SK
       source
+      eventType
       detail
       snapVersion
       snapData
@@ -117,6 +119,7 @@ export const deleteOrderEvent = /* GraphQL */ `
       PK
       SK
       source
+      eventType
       detail
       snapVersion
       snapData

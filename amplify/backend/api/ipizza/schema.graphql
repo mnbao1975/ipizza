@@ -26,7 +26,8 @@ type OrderEvent
   ) {
   PK: String!
   SK: String!
-  source: String
+  source: String!
+  eventType: String!
   detail: AWSJSON
   snapVersion: Float
   snapData: AWSJSON

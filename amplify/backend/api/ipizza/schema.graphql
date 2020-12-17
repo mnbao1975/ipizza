@@ -16,10 +16,9 @@ type Order
   qty: Int
   total: Float
 }
-
 type OrderEvent
   @model
-  @key(name: "PK_SK", fields: ["PK", "SK"], queryField: "getDataByPrimKeys")
+  @key(name: "PK_SK", fields: ["PK", "SK"], queryField: "getDataByPrimaryKeys")
   @key(
     name: "snapshotIndex"
     fields: ["PK", "snapVersion"]

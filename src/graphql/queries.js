@@ -160,8 +160,8 @@ export const getOrderInfo = /* GraphQL */ `
     }
   }
 `;
-export const getDataByPrimKeys = /* GraphQL */ `
-  query GetDataByPrimKeys(
+export const getDataByPrimaryKeys = /* GraphQL */ `
+  query GetDataByPrimaryKeys(
     $PK: String
     $SK: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
@@ -169,7 +169,7 @@ export const getDataByPrimKeys = /* GraphQL */ `
     $limit: Int
     $nextToken: String
   ) {
-    getDataByPrimKeys(
+    getDataByPrimaryKeys(
       PK: $PK
       SK: $SK
       sortDirection: $sortDirection

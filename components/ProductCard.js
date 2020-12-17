@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { v4 as uuid } from "uuid";
 import { HeaderContext } from "../contexts/HeaderContext";
 import { setCartCounterCoookie, getCartId } from "../libs/cart";
+import { addOrderEvent } from "../libs/event";
 import { createOrder } from "../src/graphql/mutations";
 import { getOrderInfo } from "../src/graphql/queries";
 
@@ -43,6 +44,7 @@ function ProductCard(productInfo) {
       // add new order item in the table
       try {
         await createNewOrder({ cartId, username, price });
+        await addOrderEvent({ source: "order: created order" });
       } catch (err) {
         console.log(err);
       }

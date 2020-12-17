@@ -266,7 +266,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "getDataByPrimKeys",
+          "name" : "getDataByPrimaryKeys",
           "description" : null,
           "args" : [ {
             "name" : "PK",
